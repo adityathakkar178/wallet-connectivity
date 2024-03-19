@@ -4,10 +4,11 @@ import { ethers } from 'ethers';
 const Connect = (props) => {
     const [connect, setConnect] = useState('');
     const [balance, setBalance] = useState('');
+    const [accounts, setAccount] = useState('');
 
-    const connectWallet = () => {
+    const connectWallet = async () => {
         if (window.ethereum) {
-            window.ethereum
+            await window.ethereum
                 .request({ method: 'eth_requestAccounts' })
                 .then(() => {
                     const provider = new ethers.providers.Web3Provider(
@@ -15,10 +16,10 @@ const Connect = (props) => {
                     );
                     provider
                         .listAccounts()
-                        .then((accounts) => {
+                        .then(async (accounts) => {
                             if (accounts.length > 0) {
                                 setConnect(accounts[0]);
-                                provider
+                                await provider
                                     .getBalance(accounts[0])
                                     .then((balance) => {
                                         const etherBalance =

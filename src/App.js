@@ -1,7 +1,13 @@
 import Connect from'./Components/Connect';
+import Network from './Components/Network';
 
 function App() {
-    return <Connect buttontext="Connect wallet"/>;
+    return (
+      <div>
+        <Connect buttontext="Connect wallet"/>;
+        <Network />
+      </div>
+    );
 }
 
 export default App;
