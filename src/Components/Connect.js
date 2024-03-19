@@ -4,7 +4,6 @@ import { ethers } from 'ethers';
 const Connect = (props) => {
     const [connect, setConnect] = useState('');
     const [balance, setBalance] = useState('');
-    const [accounts, setAccount] = useState('');
 
     const connectWallet = async () => {
         if (window.ethereum) {
