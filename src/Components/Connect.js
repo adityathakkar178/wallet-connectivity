@@ -50,9 +50,7 @@ const Connect = (props) => {
             <h1>Connect Metamask wallet</h1>
             <h1>address : {connect}</h1>
             <h1>Balance : {balance}</h1>
-            <button onClick={connectWallet}>
-                {props.buttontext}
-            </button>
+            <button onClick={connectWallet}>{props.buttontext}</button>
         </div>
     );
 };
