@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
 
-const Connect = () => {
+const Connect = (props) => {
     const [connect, setConnect] = useState('');
     const [balance, setBalance] = useState('');
 
@@ -18,12 +18,21 @@ const Connect = () => {
                         .then((accounts) => {
                             if (accounts.length > 0) {
                                 setConnect(accounts[0]);
+                                provider
+                                    .getBalance(accounts[0])
+                                    .then((balance) => {
+                                        const etherBalance =
+                                            ethers.utils.formatEther(balance);
+                                        setBalance(etherBalance);
+                                    })
+                                    .catch((error) => {
+                                        setBalance('Error getting balance');
+                                    });
                             } else {
                                 setConnect('No accounts found');
                             }
                         })
                         .catch((error) => {
-                            console.error('Error getting accounts:', error);
                             setConnect('Error getting accounts');
                         });
                 })
@@ -39,10 +48,11 @@ const Connect = () => {
     return (
         <div>
             <h1>Connect Metamask wallet</h1>
-            <h1>{connect}</h1>
-            <h1>{balance}</h1>
-            <h1>Balance :- {setBalance}</h1>
-            <button onClick={connectWallet}>Connect wallet</button>
+            <h1>address : {connect}</h1>
+            <h1>Balance : {balance}</h1>
+            <button onClick={connectWallet}>
+                {props.buttontext}
+            </button>
         </div>
     );
 };
