@@ -27,7 +27,7 @@ const Network = () => {
                     method: 'wallet_switchEthereumChain',
                     params: [
                         {
-                            chainId: '0x89',
+                            chainId: `0x${Number(137).toString(16)}`,
                         },
                     ],
                 })
@@ -38,7 +38,7 @@ const Network = () => {
                     provider
                         .send('wallet_addEthereumChain', [
                             {
-                                chainId: '0x89',
+                                chainId: `0x${Number(137).toString(16)}`,
                                 chainName: 'Polygon Mainnet',
                                 rpcUrls: ['https://polygon-rpc.com'],
                                 blockExplorerUrls: ['https://polygonscan.com/'],
