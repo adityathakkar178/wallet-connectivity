@@ -15,15 +15,16 @@ const Connect = (props) => {
                     );
                     provider
                         .listAccounts()
-                        .then(async (accounts) => {
+                        .then((accounts) => {
                             if (accounts.length > 0) {
                                 setConnect(accounts[0]);
-                                await provider
+                                provider
                                     .getBalance(accounts[0])
                                     .then((balance) => {
                                         const etherBalance =
                                             ethers.utils.formatEther(balance);
                                         setBalance(etherBalance);
+                                        props.onConnect();
                                     })
                                     .catch((error) => {
                                         setBalance('Error getting balance');
@@ -48,8 +49,8 @@ const Connect = (props) => {
     return (
         <div>
             <h1>Connect Metamask wallet</h1>
-            <h1>address : {connect}</h1>
-            <h1>Balance : {balance}</h1>
+            {/* <h1>address : {connect}</h1>
+            <h1>Balance : {balance}</h1> */}
             <button onClick={connectWallet}>{props.buttontext}</button>
         </div>
     );

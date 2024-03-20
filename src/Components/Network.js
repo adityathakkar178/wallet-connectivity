@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ethers } from "ethers";
+import { useState, useEffect } from 'react';
+import { ethers } from 'ethers';
 
 const Network = () => {
     const [network, setNetwork] = useState();
@@ -7,11 +7,13 @@ const Network = () => {
     useEffect(() => {
         const fetchNetwork = async () => {
             if (window.ethereum) {
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const provider = new ethers.providers.Web3Provider(
+                    window.ethereum
+                );
                 const network = await provider.getNetwork();
                 setNetwork(`${network.chainId}: ${network.name}`);
             } else {
-                setNetwork("Meta mask is not installed");
+                setNetwork('Meta mask is not installed');
             }
         };
         fetchNetwork();

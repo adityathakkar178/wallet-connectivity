@@ -10,8 +10,11 @@ const AccountSwitcher = () => {
     useEffect(() => {
         const fetchAccounts = async () => {
             if (window.ethereum) {
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const provider = new ethers.providers.Web3Provider(
+                    window.ethereum
+                );
                 const account = await provider.listAccounts();
+                console.log(account);
                 console.log(account);
                 setAccounts(account);
                 if (account.length > 0) {
@@ -32,12 +35,13 @@ const AccountSwitcher = () => {
             setCurrentAccountIndex(newIndex);
             setCurrentAccount(accounts[newIndex]);
             const provider = new ethers.providers.Web3Provider(window.ethereum);
-            provider.getBalance(accounts[newIndex])
-                .then(balance => {
+            provider
+                .getBalance(accounts[newIndex])
+                .then((balance) => {
                     const etherBalance = ethers.utils.formatEther(balance);
                     setBalance(etherBalance);
                 })
-                .catch(error => {
+                .catch((error) => {
                     console.error('Error switching account:', error);
                 });
         }
@@ -47,9 +51,9 @@ const AccountSwitcher = () => {
         <div>
             <h1>Current Account Address: {currentAccount}</h1>
             <h1>Balance: {balance}</h1>
-            <button onClick={switchAccount} disabled={accounts.length <= 1}>
-                Switch Account
-            </button>
+            {accounts.length > 1 && (
+                <button onClick={switchAccount}>Switch Account</button>
+            )}
         </div>
     );
 };
