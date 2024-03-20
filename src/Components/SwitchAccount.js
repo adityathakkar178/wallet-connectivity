@@ -32,7 +32,7 @@ const AccountSwitcher = () => {
         <div>
             <h1>Current Account: {accounts[currentAccountIndex]}</h1>
             {accounts.length > 0 && (
-                <button onClick={switchAccount} disabled={accounts.length <= 1}>
+                <button onClick={switchAccount}>
                     Switch Account
                 </button>
             )}
