@@ -17,6 +17,15 @@ const Network = () => {
                 setNetwork('Meta mask is not installed');
             }
         };
+
+        const handleChainChanged = () => {
+            fetchNetwork();
+        };
+
+        if (window.ethereum) {
+            window.ethereum.on('chainChanged', handleChainChanged);
+        }
+
         fetchNetwork();
     }, []);
 
@@ -52,7 +61,9 @@ const Network = () => {
                         .then(async () => {
                             const currentNetwork = await provider.getNetwork();
                             console.log(currentNetwork);
-                            setNetwork(`${currentNetwork.chainId}: ${currentNetwork.name}`);
+                            setNetwork(
+                                `${currentNetwork.chainId}: ${currentNetwork.name}`
+                            );
                         })
                         .catch((error) => {
                             console.error(error);
