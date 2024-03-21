@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ethers } from 'ethers';
 import Balance from './Balance';
 import MintBurn from './MintBurn';
+import Transfer from './Transfer';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -66,6 +67,7 @@ const Contract = () => {
             <h1>Total Supply: {totalTokenSupply}</h1>
             <Balance contract={contract} />
             <MintBurn contract={contract} updateTotalSupply={updateTokenSupply} />
+            <Transfer contract={contract}/>
         </div>
     );
 };
