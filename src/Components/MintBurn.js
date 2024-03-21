@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-const Mint = ({ contract, updateTotalSupply }) => {
+const MintBurn = ({ contract, updateTotalSupply }) => {
     const [address, setAddress] = useState('');
     const [amount, setAmount] = useState('');
+    const [burnAmount, setBurnAmount] = useState('');
     const [transaction, setTransaction] = useState('');
 
     const handleAddress = (e) => {
@@ -11,6 +12,10 @@ const Mint = ({ contract, updateTotalSupply }) => {
 
     const handleAmount = (e) => {
         setAmount(e.target.value);
+    };
+
+    const handleBurnAmount = (e) => {
+        setBurnAmount(e.target.value);
     };
 
     const mintTokens = () => {
@@ -22,6 +27,18 @@ const Mint = ({ contract, updateTotalSupply }) => {
             })
             .catch((err) => {
                 console.error('Error Minitng Tokens', err);
+            });
+    };
+
+    const burnTokens = () => {
+        contract
+            .burn(burnAmount)
+            .then((transaction) => {
+                setTransaction(transaction.hash);
+                updateTotalSupply();
+            })
+            .catch((err) => {
+                console.error('Error burning tokens', err);
             });
     };
 
@@ -37,9 +54,18 @@ const Mint = ({ contract, updateTotalSupply }) => {
                 <input type="number" value={amount} onChange={handleAmount} />
             </label>
             <button onClick={mintTokens}>Mint</button>
-            {/* {transaction && <h1>Transaction : {transaction}</h1>} */}
+            <h1>Burn Tokens</h1>
+            <label>
+                amount
+                <input
+                    type="number"
+                    value={burnAmount}
+                    onChange={handleBurnAmount}
+                />
+            </label>
+            <button onClick={burnTokens}>Burn</button>
         </div>
     );
 };
 
-export default Mint;
+export default MintBurn;
