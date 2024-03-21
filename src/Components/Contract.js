@@ -5,6 +5,7 @@ import Balance from './Balance';
 import MintBurn from './MintBurn';
 import Transfer from './Transfer';
 import Approve from './Approve';
+import TransferTokens from './TransferFrom';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -73,6 +74,7 @@ const Contract = () => {
             />
             <Transfer contract={contract} />
             <Approve contract={contract} />
+            <TransferTokens contract={contract}/>
         </div>
     );
 };

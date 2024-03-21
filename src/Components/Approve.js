@@ -33,7 +33,7 @@ const Approve = ({ contract }) => {
             </label>
             <label>
                 Amount
-                <input type="text" value={amount} onChange={handleAmount} />
+                <input type="number" value={amount} onChange={handleAmount} />
             </label>
             <button onClick={allow}>Approve</button>
         </div>
