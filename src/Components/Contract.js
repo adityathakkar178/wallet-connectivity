@@ -7,6 +7,7 @@ import Transfer from './Transfer';
 import Approve from './Approve';
 import TransferTokens from './TransferFrom';
 import AllownaceIncrease from './Allowance';
+import AllownaceDecrease from './DecreaseAllowance';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -77,6 +78,7 @@ const Contract = () => {
             <Approve contract={contract} />
             <TransferTokens contract={contract} />
             <AllownaceIncrease contract={contract} />
+            <AllownaceDecrease contract={contract} />
         </div>
     );
 };
