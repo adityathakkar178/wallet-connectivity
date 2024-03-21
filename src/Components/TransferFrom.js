@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const TransferTokens = ({ contract }) => {
     const [fromAddress, setFromAddress] = useState('');
@@ -19,29 +19,42 @@ const TransferTokens = ({ contract }) => {
     };
 
     const transferToken = () => {
-        contract.transferFrom(fromAddress, toAddress, amount).then((transaction) => {
-            setTransaction(transaction.hash);
-        }).catch((err) => {
-            console.error("Error transfering tokens", err);
-        });
+        contract
+            .transferFrom(fromAddress, toAddress, amount)
+            .then((transaction) => {
+                setTransaction(transaction.hash);
+            })
+            .catch((err) => {
+                console.error('Error transfering tokens', err);
+            });
     };
 
-    return (<div>
-        <h1>Transfer Tokens</h1>
-        <label>
-            From Address
-            <input type="text" value={fromAddress} onChange={handleFromAddress} />
-        </label>
-        <label>
-            To Address
-            <input type="text" value={toAddress} onChange={handleToAddress} />
-        </label>
-        <label>
-            Amount
-            <input type="Number" value={amount} onChange={handleAmount} />
-        </label>
-        <button onClick={transferToken}>Transfer</button>
-    </div>);
+    return (
+        <div>
+            <h1>Transfer Tokens</h1>
+            <label>
+                From Address
+                <input
+                    type="text"
+                    value={fromAddress}
+                    onChange={handleFromAddress}
+                />
+            </label>
+            <label>
+                To Address
+                <input
+                    type="text"
+                    value={toAddress}
+                    onChange={handleToAddress}
+                />
+            </label>
+            <label>
+                Amount
+                <input type="Number" value={amount} onChange={handleAmount} />
+            </label>
+            <button onClick={transferToken}>Transfer</button>
+        </div>
+    );
 };
 
 export default TransferTokens;
