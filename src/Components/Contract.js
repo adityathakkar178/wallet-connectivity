@@ -4,6 +4,7 @@ import { ethers } from 'ethers';
 import Balance from './Balance';
 import MintBurn from './MintBurn';
 import Transfer from './Transfer';
+import Approve from './Approve';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -66,8 +67,12 @@ const Contract = () => {
         <div>
             <h1>Total Supply: {totalTokenSupply}</h1>
             <Balance contract={contract} />
-            <MintBurn contract={contract} updateTotalSupply={updateTokenSupply} />
-            <Transfer contract={contract}/>
+            <MintBurn
+                contract={contract}
+                updateTotalSupply={updateTokenSupply}
+            />
+            <Transfer contract={contract} />
+            <Approve contract={contract} />
         </div>
     );
 };
