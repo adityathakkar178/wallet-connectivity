@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ethers } from 'ethers';
+import Balance from './Balance';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -56,6 +57,7 @@ const Contract = () => {
     return (
         <div>
             <h1>Total Supply: {totalTokenSupply}</h1>
+            <Balance contract={contract} />
         </div>
     );
 };
