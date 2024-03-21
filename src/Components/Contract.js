@@ -3,8 +3,9 @@ import axios from 'axios';
 import { ethers } from 'ethers';
 
 const Contract = () => {
-    const [abi, setAbi] = useState(null);
-    const [contract, setContract] = useState(null);
+    const [abi, setAbi] = useState('');
+    const [contract, setContract] = useState('');
+    const [totalTokenSupply, setTotalTokenSupply] = useState('');
 
     useEffect(() => {
         const fetchContractABI = () => {
@@ -42,6 +43,9 @@ const Contract = () => {
                     );
                     console.log(contract);
                     setContract(contract);
+                    contract.totalSupply().then((supply) => {
+                        setTotalTokenSupply(supply.toString());
+                    });
                 })
                 .catch((error) => {
                     console.error('Error connecting to MetaMask:', error);
@@ -49,7 +53,11 @@ const Contract = () => {
         }
     }, [abi]);
 
-    return <div></div>;
+    return (
+        <div>
+            <h1>Total Supply: {totalTokenSupply}</h1>
+        </div>
+    );
 };
 
 export default Contract;
