@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Connect from './Components/Connect';
 import AccountSwitcher from './Components/SwitchAccount';
 import Network from './Components/Network';
+import Contract from './Components/Contract';
 
 function App() {
     const [isConnected, setIsConnected] = useState(false);
@@ -20,6 +21,7 @@ function App() {
             )}
             {isConnected && <Network />}
             {isConnected && <AccountSwitcher />}
+            {isConnected && <Contract />}
         </div>
     );
 }
