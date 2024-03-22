@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const ViewAllowance = ({ contract }) => {
     const [ownerAddress, setOwnerAddress] = useState('');
@@ -15,8 +15,11 @@ const ViewAllowance = ({ contract }) => {
 
     const viewAllowance = async () => {
         try {
-            const amount = await contract.allowance(ownerAddress, spenderAddress);
-            setAllowanceAmount(amount.toString()); // Convert to string
+            const amount = await contract.allowance(
+                ownerAddress,
+                spenderAddress
+            );
+            setAllowanceAmount(amount.toString());
         } catch (error) {
             console.error('Error fetching allowance:', error);
         }
