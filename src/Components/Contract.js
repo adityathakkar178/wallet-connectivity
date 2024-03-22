@@ -10,11 +10,13 @@ import AllownaceIncrease from './Allowance';
 import AllownaceDecrease from './DecreaseAllowance';
 import ViewAllowance from './ViewAllowance';
 import SellToken from './Sell';
+import BuyTokens from './Buy';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
     const [contract, setContract] = useState('');
     const [totalTokenSupply, setTotalTokenSupply] = useState('');
+    const [price, setPrice] = useState(0);
 
     useEffect(() => {
         const fetchContractABI = () => {
@@ -68,6 +70,11 @@ const Contract = () => {
         });
     };
 
+    const updatePrice = (newPrice) => {
+        setPrice(newPrice);
+        console.log(newPrice);
+    };
+
     return (
         <div>
             <h1>Total Supply: {totalTokenSupply}</h1>
@@ -82,7 +89,8 @@ const Contract = () => {
             <AllownaceIncrease contract={contract} />
             <AllownaceDecrease contract={contract} />
             <ViewAllowance contract={contract} />
-            <SellToken contract={contract} />
+            <SellToken contract={contract} updatePrice={updatePrice} />
+            <BuyTokens contract={contract} price={price} />
         </div>
     );
 };
