@@ -11,6 +11,8 @@ import AllownaceDecrease from './DecreaseAllowance';
 import ViewAllowance from './ViewAllowance';
 import SellToken from './Sell';
 import BuyTokens from './Buy';
+import classes from './Contract.module.css';
+import Container from 'react-bootstrap/Container';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -76,21 +78,24 @@ const Contract = () => {
     };
 
     return (
-        <div>
-            <h1>Total Supply: {totalTokenSupply}</h1>
-            <Balance contract={contract} />
-            <MintBurn
-                contract={contract}
-                updateTotalSupply={updateTokenSupply}
-            />
-            <Transfer contract={contract} />
-            <Approve contract={contract} />
-            <TransferTokens contract={contract} />
-            <AllownaceIncrease contract={contract} />
-            <AllownaceDecrease contract={contract} />
-            <ViewAllowance contract={contract} />
-            <SellToken contract={contract} updatePrice={updatePrice} />
-            <BuyTokens contract={contract} price={price} />
+        <div className={classes.contractcontainer}>
+            <h1 className={classes.contracttitle}>ERC20 Contract</h1>
+            <div className={classes.contractinfo}>
+                <h1>Total Supply: {totalTokenSupply}</h1>
+                <Balance contract={contract} />
+                <MintBurn
+                    contract={contract}
+                    updateTotalSupply={updateTokenSupply}
+                />
+                <Transfer contract={contract} />
+                <Approve contract={contract} />
+                <TransferTokens contract={contract} />
+                <AllownaceIncrease contract={contract} />
+                <AllownaceDecrease contract={contract} />
+                <ViewAllowance contract={contract} />
+                <SellToken contract={contract} updatePrice={updatePrice} />
+                <BuyTokens contract={contract} price={price} />
+            </div>
         </div>
     );
 };
