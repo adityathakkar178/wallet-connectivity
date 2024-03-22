@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
+import classes from './Network.module.css';
 
 const Network = () => {
     const [network, setNetwork] = useState();
@@ -80,7 +81,7 @@ const Network = () => {
     };
 
     return (
-        <div>
+        <div className={classes.container}>
             <h1>Network</h1>
             <h1>{network}</h1>
             <button onClick={switchNetwork}>Switch Network</button>

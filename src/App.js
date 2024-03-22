@@ -19,8 +19,8 @@ function App() {
                     onConnect={handleConnect}
                 />
             )}
-            {isConnected && <Network />}
-            {isConnected && <AccountSwitcher />}
+            {/* {isConnected && <Network />}
+            {isConnected && <AccountSwitcher />} */}
             {isConnected && <Contract />}
         </div>
     );

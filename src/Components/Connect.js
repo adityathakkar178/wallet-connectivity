@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
+import classes from './Connect.module.css';
 
 const Connect = (props) => {
     const [connect, setConnect] = useState('');
@@ -47,11 +48,11 @@ const Connect = (props) => {
     };
 
     return (
-        <div>
-            <h1>Connect Metamask wallet</h1>
+        <div className={classes.container}>
+            <h1 className={classes.title}>Connect Metamask wallet</h1>
             {/* <h1>address : {connect}</h1>
             <h1>Balance : {balance}</h1> */}
-            <button onClick={connectWallet}>{props.buttontext}</button>
+            <button onClick={connectWallet} className={classes.button}>{props.buttontext}</button>
         </div>
     );
 };
