@@ -9,6 +9,7 @@ import TransferTokens from './TransferFrom';
 import AllownaceIncrease from './Allowance';
 import AllownaceDecrease from './DecreaseAllowance';
 import ViewAllowance from './ViewAllowance';
+import SellToken from './Sell';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -81,6 +82,7 @@ const Contract = () => {
             <AllownaceIncrease contract={contract} />
             <AllownaceDecrease contract={contract} />
             <ViewAllowance contract={contract} />
+            <SellToken contract={contract} />
         </div>
     );
 };
