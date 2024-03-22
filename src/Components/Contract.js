@@ -8,6 +8,7 @@ import Approve from './Approve';
 import TransferTokens from './TransferFrom';
 import AllownaceIncrease from './Allowance';
 import AllownaceDecrease from './DecreaseAllowance';
+import ViewAllowance from './ViewAllowance';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -42,7 +43,7 @@ const Contract = () => {
                     const signer = provider.getSigner();
                     console.log(signer.getAddress());
                     const contractAddress =
-                        '0xdc64a140aa3e981100a9beca4e685f962f0cf6c9';
+                        '0x5fbdb2315678afecb367f032d93f642f64180aa3';
                     const contract = new ethers.Contract(
                         contractAddress,
                         abi,
@@ -79,6 +80,7 @@ const Contract = () => {
             <TransferTokens contract={contract} />
             <AllownaceIncrease contract={contract} />
             <AllownaceDecrease contract={contract} />
+            <ViewAllowance contract={contract} />
         </div>
     );
 };
