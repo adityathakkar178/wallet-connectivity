@@ -12,7 +12,7 @@ import ViewAllowance from './ViewAllowance';
 import SellToken from './Sell';
 import BuyTokens from './Buy';
 import classes from './Contract.module.css';
-import Container from 'react-bootstrap/Container';
+import TokensTable from './Tokens';
 
 const Contract = () => {
     const [abi, setAbi] = useState('');
@@ -95,6 +95,7 @@ const Contract = () => {
                 <ViewAllowance contract={contract} />
                 <SellToken contract={contract} updatePrice={updatePrice} />
                 <BuyTokens contract={contract} price={price} />
+                <TokensTable />
             </div>
         </div>
     );
