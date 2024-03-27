@@ -29,7 +29,7 @@ const TokensTable = ({ contract }) => {
                     onChange={(e) => setSortBy(e.target.value)}
                 >
                     <option value="date">Date</option>
-                    <option value="balance">Highest Minted Tokens</option>
+                    <option value="amount">Highest Minted Tokens</option>
                 </select>
             </label>
             <table>
