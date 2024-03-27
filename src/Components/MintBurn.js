@@ -28,8 +28,6 @@ const MintBurn = ({ contract, updateTotalSupply }) => {
                     amount,
                     transactionHash: transaction.hash,
                 });
-            })
-            .then(() => {
                 setTransaction(transaction.hash);
                 updateTotalSupply();
             })
